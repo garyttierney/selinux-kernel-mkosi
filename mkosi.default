@@ -1,0 +1,13 @@
+[Distribution]
+Distribution=fedora
+Release=25
+
+[Output]
+Format=raw_gpt
+
+[Packages]
+Packages=libselinux-utils selinux-policy selinux-policy-targeted policycoreutils procps-ng findutils
+Cache=mkosi.cache/
+
+[Validation]
+Password=myrootpw

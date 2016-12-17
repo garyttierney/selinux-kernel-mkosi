@@ -1,0 +1,12 @@
+!.gitkeep
+
+/image.raw
+
+# Don't commit the package cache.
+!/mkosi
+/mkosi.cache/*
+
+# Remove and temporary mkosi partition table
+# files.
+
+/.mkosi-*

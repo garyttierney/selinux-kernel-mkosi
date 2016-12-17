@@ -1,0 +1,28 @@
+selinux-kernel-mkosi
+--------------------
+
+mkosi configuration files for building an selinux-testsuite root filesystem.
+The aim here is to make testing kernel changes against the test suite as fast
+as possible.
+
+
+Building an image
+--------------------
+
+An image can be built by simply running "sudo mkosi", when that completes the
+image will be put into permissive mode and and relabel on next boot (note: this
+seems to be a bug, systemd wants to relabelto on an unconfined users files
+before auto-relabel happens).  The output will be a single GPT disk image file
+with one partition (the rootfs).
+
+Running the image
+--------------------
+
+There's many ways to run the image produced, however, we want to test kernel
+changes, so we're interested in booting this image in qemu.  The following should
+suffice for booting a new image with a custom kernel:
+
+qemu-kvm -kernel kernel/arch/x86_64/boot/bzImage \
+         -drive format=raw,file=image.raw -serial stdio \
+         -append "root=/dev/sda1 rw rootfstype=ext4 console=ttyS0" -m 256M
+

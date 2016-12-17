@@ -1,0 +1,2 @@
+Add the selinux-testsuite to mkosi as the build target, so we can run the
+testsuite immediately after building the image.
